@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Bảng tuần hoàn Hóa học 10</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #eef7ff, #f8f0ff);
+    color: #222;
+}
+
+/* ===== HEADER ===== */
+
+header {
+    text-align: center;
+    padding: 30px 15px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 34px;
+}
+
+header p {
+    margin-top: 10px;
+}
+
+/* ===== SEARCH ===== */
+
+.search-box {
+    text-align: center;
+    margin: 25px;
+}
+
+#search {
+    width: 90%;
+    max-width: 500px;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+}
+
+/* ===== LEGEND ===== */
+
+.legend {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px;
+}
+
+.legend-item {
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+/* ===== PERIODIC TABLE ===== */
+
+.table-container {
+    overflow-x: auto;
+    padding: 20px;
+}
+
+.periodic-table {
+    display: grid;
+    grid-template-columns: repeat(18, 70px);
+    grid-template-rows: repeat(7, 85px);
+    gap: 6px;
+    width: max-content;
+    margin: auto;
+}
+
+.element {
+    width: 70px;
+    height: 85px;
+    border-radius: 10px;
+    padding: 5px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.2s;
+    border: 2px solid rgba(0,0,0,0.08);
+}
+
+.element:hover {
+    transform: scale(1.08);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    z-index: 5;
+}
+
+.number {
+    text-align: left;
+    font-size: 11px;
+}
+
+.symbol {
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 4px;
+}
+
+.name {
+    font-size: 10px;
+    margin-top: 3px;
+}
+
+/* ===== COLORS ===== */
+
+.kim-loai-kiem {
+    background: #ffb3ba;
+}
+
+.kim-loai-kiem-tho {
+    background: #ffd6a5;
+}
+
+.kim-loai-chuyen-tiep {
+    background: #fdffb6;
+}
+
+.kim-loai-hau-chuyen-tiep {
+    background: #caffbf;
+}
+
+.a-kim {
+    background: #9bf6ff;
+}
+
+.phan-kim {
+    background: #bdb2ff;
+}
+
+.halogen {
+    background: #a0c4ff;
+}
+
+.khi-hiem {
+    background: #ffc6ff;
+}
+
+/* ===== F BLOCK ===== */
+
+.f-block {
+    margin: 30px auto;
+    width: max-content;
+}
+
+.f-title {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 15px;
+}
+
+.f-row {
+    display: flex;
+    gap: 6px;
+}
+
+.f-element {
+    width: 55px;
+    height: 65px;
+    border-radius: 8px;
+    text-align: center;
+    padding: 4px;
+    cursor: pointer;
+    border: 2px solid rgba(0,0,0,0.08);
+    transition: 0.2s;
+}
+
+.f-element:hover {
+    transform: scale(1.08);
+}
+
+.f-element .symbol {
+    font-size: 18px;
+}
+
+.f-element .number {
+    font-size: 9px;
+}
+
+.f-element .name {
+    font-size: 8px;
+}
+
+.lanthanide {
+    background: #ffadad;
+}
+
+.actinide {
+    background: #ffccf9;
+}
+
+/* ===== KNOWLEDGE ===== */
+
+.knowledge {
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.knowledge h2 {
+    text-align: center;
+    color: #6842a5;
+}
+
+.knowledge-card {
+    background: #f7f4ff;
+    padding: 15px;
+    margin: 12px 0;
+    border-radius: 12px;
+}
+
+.knowledge-card h3 {
+    margin-top: 0;
+    color: #6842a5;
+}
+
+/* ===== INFORMATION BOX ===== */
+
+#element-info {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.info-box {
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: white;
+    border-radius: 25px;
+    padding: 30px;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+#close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    border: none;
+    background: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.info-symbol {
+    font-size: 60px;
+    font-weight: bold;
+    text-align: center;
+    color: #6842a5;
+}
+
+.info-name {
+    text-align: center;
+}
+
+.info-content {
+    margin-top: 20px;
+}
+
+.info-content p {
+    padding: 8px;
+    margin: 5px 0;
+    background: #f5f5f5;
+    border-radius: 8px;
+}
+
+/* ===== FOOTER ===== */
+
+footer {
+    text-align: center;
+    padding: 25px;
+    margin-top: 30px;
+    background: #6842a5;
+    color: white;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🧪 BẢNG TUẦN HOÀN HÓA HỌC</h1>
+    <p>Hóa học 10 — Khám phá thế giới các nguyên tố</p>
+</header>
+
+
+<div class="search-box">
+    <input
+        type="text"
+        id="search"
+        placeholder="🔎 Tìm nguyên tố..."
+    >
+</div>
+
+
+<div class="legend">
+
+    <div class="legend-item kim-loai-kiem">
+        Kim loại kiềm
+    </div>
+
+    <div class="legend-item kim-loai-kiem-tho">
+        Kim loại kiềm thổ
+    </div>
+
+    <div class="legend-item kim-loai-chuyen-tiep">
+        Kim loại chuyển tiếp
+    </div>
+
+    <div class="legend-item kim-loai-hau-chuyen-tiep">
+        Kim loại
+    </div>
+
+    <div class="legend-item a-kim">
+        Á kim
+    </div>
+
+    <div class="legend-item phan-kim">
+        Phi kim
+    </div>
+
+    <div class="legend-item halogen">
+        Halogen
+    </div>
+
+    <div class="legend-item khi-hiem">
+        Khí hiếm
+    </div>
+
+</div>
+
+
+<!-- BẢNG CHÍNH -->
+
+<div class="table-container">
+    <div class="periodic-table" id="periodic-table"></div>
+</div>
+
+
+<!-- HỌ LANTAN -->
+
+<div class="f-block">
+
+    <div class="f-title">
+        Họ Lantan
+    </div>
+
+    <div class="f-row" id="lanthanides"></div>
+
+</div>
+
+
+<!-- HỌ ACTINI -->
+
+<div class="f-block">
+
+    <div class="f-title">
+        Họ Actini
+    </div>
+
+    <div class="f-row" id="actinides"></div>
+
+</div>
+
+
+<!-- KIẾN THỨC HÓA 10 -->
+
+<section class="knowledge">
+
+    <h2>📚 KIẾN THỨC HÓA HỌC 10</h2>
+
+    <div class="knowledge-card">
+
+        <h3>🔹 Cấu tạo nguyên tử</h3>
+
+        <p>
+            Nguyên tử gồm hạt nhân và lớp vỏ electron.
+            Hạt nhân chứa proton và neutron.
+            Electron chuyển động xung quanh hạt nhân.
+        </p>
+
+    </div>
+
+    <div class="knowledge-card">
+
+        <h3>🔹 Số hiệu nguyên tử</h3>
+
+        <p>
+            Số hiệu nguyên tử Z bằng số proton trong hạt nhân.
+            Với nguyên tử trung hòa, số proton bằng số electron.
+        </p>
+
+    </div>
+
+    <div class="knowledge-card">
+
+        <h3>🔹 Bảng tuần hoàn</h3>
+
+        <p>
+            Các nguyên tố được sắp xếp theo chiều tăng dần
+            của số hiệu nguyên tử.
+        </p>
+
+    </div>
+
+    <div class="knowledge-card">
+
+        <h3>🔹 Liên kết hóa học</h3>
+
+        <p>
+            Liên kết hóa học là sự kết hợp giữa các nguyên tử
+            tạo thành phân tử hoặc tinh thể bền vững.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- HỘP THÔNG TIN NGUYÊN TỐ -->
+
+<div id="element-info" class="hidden">
+
+    <div class="info-box">
+
+        <button id="close">×</button>
+
+        <div id="info-symbol" class="info-symbol"></div>
+
+        <h2 id="info-name" class="info-name"></h2>
+
+        <div class="info-content">
+
+            <p>
+                <b>Số hiệu nguyên tử:</b>
+                <span id="info-number"></span>
+            </p>
+
+            <p>
+                <b>Nguyên tử khối:</b>
+                <span id="info-mass"></span>
+            </p>
+
+            <p>
+                <b>Số proton:</b>
+                <span id="info-proton"></span>
+            </p>
+
+            <p>
+                <b>Số electron:</b>
+                <span id="info-electron"></span>
+            </p>
+
+            <p>
+                <b>Số neutron:</b>
+                <span id="info-neutron"></span>
+            </p>
+
+            <p>
+                <b>Chu kì:</b>
+                <span id="info-period"></span>
+            </p>
+
+            <p>
+                <b>Nhóm:</b>
+                <span id="info-group"></span>
+            </p>
+
+            <p>
+                <b>Loại nguyên tố:</b>
+                <span id="info-type"></span>
+            </p>
+
+            <p>
+                <b>Cấu hình electron:</b>
+                <span id="info-config"></span>
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<footer>
+    🧪 Website bảng tuần hoàn Hóa học 10
+</footer>
+
+
+<script>
+
+/* =====================================================
+   DỮ LIỆU CÁC NGUYÊN TỐ
+   [Kí hiệu, Tên, Z, Chu kì, Nhóm, Loại, Khối lượng]
+===================================================== */
+
+const elements = [
+
+["H","Hydrogen",1,1,1,"Phi kim",1.008],
+["He","Helium",2,1,18,"Khí hiếm",4.003],
+
+["Li","Lithium",3,2,1,"Kim loại kiềm",6.94],
+["Be","Beryllium",4,2,2,"Kim loại kiềm thổ",9.012],
+["B","Boron",5,2,13,"Á kim",10.81],
+["C","Carbon",6,2,14,"Phi kim",12.011],
+["N","Nitrogen",7,2,15,"Phi kim",14.007],
+["O","Oxygen",8,2,16,"Phi kim",15.999],
+["F","Fluorine",9,2,17,"Halogen",18.998],
+["Ne","Neon",10,2,18,"Khí hiếm",20.180],
+
+["Na","Sodium",11,3,1,"Kim loại kiềm",22.990],
+["Mg","Magnesium",12,3,2,"Kim loại kiềm thổ",24.305],
+["Al","Aluminium",13,3,13,"Kim loại",26.982],
+["Si","Silicon",14,3,14,"Á kim",28.085],
+["P","Phosphorus",15,3,15,"Phi kim",30.974],
+["S","Sulfur",16,3,16,"Phi kim",32.06],
+["Cl","Chlorine",17,3,17,"Halogen",35.45],
+["Ar","Argon",18,3,18,"Khí hiếm",39.948],
+
+["K","Potassium",19,4,1,"Kim loại kiềm",39.098],
+["Ca","Calcium",20,4,2,"Kim loại kiềm thổ",40.078],
+["Sc","Scandium",21,4,3,"Kim loại chuyển tiếp",44.956],
+["Ti","Titanium",22,4,4,"Kim loại chuyển tiếp",47.867],
+["V","Vanadium",23,4,5,"Kim loại chuyển tiếp",50.942],
+["Cr","Chromium",24,4,6,"Kim loại chuyển tiếp",51.996],
+["Mn","Manganese",25,4,7,"Kim loại chuyển tiếp",54.938],
+["Fe","Iron",26,4,8,"Kim loại chuyển tiếp",55.845],
+["Co","Cobalt",27,4,9,"Kim loại chuyển tiếp",58.933],
+["Ni","Nickel",28,4,10,"Kim loại chuyển tiếp",58.693],
+["Cu","Copper",29,4,11,"Kim loại chuyển tiếp",63.546],
+["Zn","Zinc",30,4,12,"Kim loại chuyển tiếp",65.38],
+["Ga","Gallium",31,4,13,"Kim loại",69.723],
+["Ge","Germanium",32,4,14,"Á kim",72.630],
+["As","Arsenic",33,4,15,"Á kim",74.922],
+["Se","Selenium",34,4,16,"Phi kim",78.971],
+["Br","Bromine",35,4,17,"Halogen",79.904],
+["Kr","Krypton",36,4,18,"Khí hiếm",83.798],
+
+["Rb","Rubidium",37,5,1,"Kim loại kiềm",85.468],
+["Sr","Strontium",38,5,2,"Kim loại kiềm thổ",87.62],
+["Y","Yttrium",39,5,3,"Kim loại chuyển tiếp",88.906],
+["Zr","Zirconium",40,5,4,"Kim loại chuyển tiếp",91.224],
+["Nb","Niobium",41,5,5,"Kim loại chuyển tiếp",92.906],
+["Mo","Molybdenum",42,5,6,"Kim loại chuyển tiếp",95.95],
+["Tc","Technetium",43,5,7,"Kim loại chuyển tiếp",98],
+["Ru","Ruthenium",44,5,8,"Kim loại chuyển tiếp",101.07],
+["Rh","Rhodium",45,5,9,"Kim loại chuyển tiếp",102.91],
+["Pd","Palladium",46,5,10,"Kim loại chuyển tiếp",106.42],
+["Ag","Silver",47,5,11,"Kim loại chuyển tiếp",107.87],
+["Cd","Cadmium",48,5,12,"Kim loại chuyển tiếp",112.41],
+["In","Indium",49,5,13,"Kim loại",114.82],
+["Sn","Tin",50,5,14,"Kim loại",118.71],
+["Sb","Antimony",51,5,15,"Á kim",121.76],
+["Te","Tellurium",52,5,16,"Á kim",127.60],
+["I","Iodine",53,5,17,"Halogen",126.90],
+["Xe","Xenon",54,5,18,"Khí hiếm",131.29],
+
+["Cs","Cesium",55,6,1,"Kim loại kiềm",132.91],
+["Ba","Barium",56,6,2,"Kim loại kiềm thổ",137.33],
+["La","Lanthanum",57,6,3,"Kim loại",138.91],
+["Hf","Hafnium",72,6,4,"Kim loại chuyển tiếp",178.49],
+["Ta","Tantalum",73,6,5,"Kim loại chuyển tiếp",180.95],
+["W","Tungsten",74,6,6,"Kim loại chuyển tiếp",183.84],
+["Re","Rhenium",75,6,7,"Kim loại chuyển tiếp",186.21],
+["Os","Osmium",76,6,8,"Kim loại chuyển tiếp",190.23],
+["Ir","Iridium",77,6,9,"Kim loại chuyển tiếp",192.22],
+["Pt","Platinum",78,6,10,"Kim loại chuyển tiếp",195.08],
+["Au","Gold",79,6,11,"Kim loại chuyển tiếp",196.97],
+["Hg","Mercury",80,6,12,"Kim loại",200.59],
+["Tl","Thallium",81,6,13,"Kim loại",204.38],
+["Pb","Lead",82,6,14,"Kim loại",207.2],
+["Bi","Bismuth",83,6,15,"Kim loại",208.98],
+["Po","Polonium",84,6,16,"Á kim",209],
+["At","Astatine",85,6,17,"Halogen",210],
+["Rn","Radon",86,6,18,"Khí hiếm",222],
+
+["Fr","Francium",87,7,1,"Kim loại kiềm",223],
+["Ra","Radium",88,7,2,"Kim loại kiềm thổ",226],
+["Ac","Actinium",89,7,3,"Kim loại",227],
+["Rf","Rutherfordium",104,7,4,"Kim loại chuyển tiếp",267],
+["Db","Dubnium",105,7,5,"Kim loại chuyển tiếp",268],
+["Sg","Seaborgium",106,7,6,"Kim loại chuyển tiếp",269],
+["Bh","Bohrium",107,7,7,"Kim loại chuyển tiếp",270],
+["Hs","Hassium",108,7,8,"Kim loại chuyển tiếp",277],
+["Mt","Meitnerium",109,7,9,"Kim loại chuyển tiếp",278],
+["Ds","Darmstadtium",110,7,10,"Kim loại chuyển tiếp",281],
+["Rg","Roentgenium",111,7,11,"Kim loại chuyển tiếp",282],
+["Cn","Copernicium",112,7,12,"Kim loại",285],
+["Nh","Nihonium",113,7,13,"Kim loại",286],
+["Fl","Flerovium",114,7,14,"Kim loại",289],
+["Mc","Moscovium",115,7,15,"Kim loại",290],
+["Lv","Livermorium",116,7,16,"Kim loại",293],
+["Ts","Tennessine",117,7,17,"Halogen",294],
+["Og","Oganesson",118,7,18,"Khí hiếm",294]
+
+];
+
+
+/* =====================================================
+   CẤU HÌNH ELECTRON
+===================================================== */
+
+const electronConfig = {
+
+H:"1s¹",
+He:"1s²",
+
+Li:"1s² 2s¹",
+Be:"1s² 2s²",
+B:"1s² 2s² 2p¹",
+C:"1s² 2s² 2p²",
+N:"1s² 2s² 2p³",
+O:"1s² 2s² 2p⁴",
+F:"1s² 2s² 2p⁵",
+Ne:"1s² 2s² 2p⁶",
+
+Na:"1s² 2s² 2p⁶ 3s¹",
+Mg:"1s² 2s² 2p⁶ 3s²",
+Al:"1s² 2s² 2p⁶ 3s² 3p¹",
+Si:"1s² 2s² 2p⁶ 3s² 3p²",
+P:"1s² 2s² 2p⁶ 3s² 3p³",
+S:"1s² 2s² 2p⁶ 3s² 3p⁴",
+Cl:"1s² 2s² 2p⁶ 3s² 3p⁵",
+Ar:"1s² 2s² 2p⁶ 3s² 3p⁶",
+
+K:"[Ar] 4s¹",
+Ca:"[Ar] 4s²",
+Sc:"[Ar] 3d¹ 4s²",
+Ti:"[Ar] 3d² 4s²",
+V:"[Ar] 3d³ 4s²",
+Cr:"[Ar] 3d⁵ 4s¹",
+Mn:"[Ar] 3d⁵ 4s²",
+Fe:"[Ar] 3d⁶ 4s²",
+Co:"[Ar] 3d⁷ 4s²",
+Ni:"[Ar] 3d⁸ 4s²",
+Cu:"[Ar] 3d¹⁰ 4s¹",
+Zn:"[Ar] 3d¹⁰ 4s²",
+Ga:"[Ar] 3d¹⁰ 4s² 4p¹",
+Ge:"[Ar] 3d¹⁰ 4s² 4p²",
+As:"[Ar] 3d¹⁰ 4s² 4p³",
+Se:"[Ar] 3d¹⁰ 4s² 4p⁴",
+Br:"[Ar] 3d¹⁰ 4s² 4p⁵",
+Kr:"[Ar] 3d¹⁰ 4s² 4p⁶",
+
+Rb:"[Kr] 5s¹",
+Sr:"[Kr] 5s²",
+Y:"[Kr] 4d¹ 5s²",
+Zr:"[Kr] 4d² 5s²",
+Nb:"[Kr] 4d⁴ 5s¹",
+Mo:"[Kr] 4d⁵ 5s¹",
+Tc:"[Kr] 4d⁵ 5s²",
+Ru:"[Kr] 4d⁷ 5s¹",
+Rh:"[Kr] 4d⁸ 5s¹",
+Pd:"[Kr] 4d¹⁰",
+Ag:"[Kr] 4d¹⁰ 5s¹",
+Cd:"[Kr] 4d¹⁰ 5s²",
+In:"[Kr] 4d¹⁰ 5s² 5p¹",
+Sn:"[Kr] 4d¹⁰ 5s² 5p²",
+Sb:"[Kr] 4d¹⁰ 5s² 5p³",
+Te:"[Kr] 4d¹⁰ 5s² 5p⁴",
+I:"[Kr] 4d¹⁰ 5s² 5p⁵",
+Xe:"[Kr] 4d¹⁰ 5s² 5p⁶",
+
+Cs:"[Xe] 6s¹",
+Ba:"[Xe] 6s²",
+La:"[Xe] 5d¹ 6s²",
+
+Hf:"[Xe] 4f¹⁴ 5d² 6s²",
+Ta:"[Xe] 4f¹⁴ 5d³ 6s²",
+W:"[Xe] 4f¹⁴ 5d⁴ 6s²",
+Re:"[Xe] 4f¹⁴ 5d⁵ 6s²",
+Os:"[Xe] 4f¹⁴ 5d⁶ 6s²",
+Ir:"[Xe] 4f¹⁴ 5d⁷ 6s²",
+Pt:"[Xe] 4f¹⁴ 5d⁹ 6s¹",
+Au:"[Xe] 4f¹⁴ 5d¹⁰ 6s¹",
+Hg:"[Xe] 4f¹⁴ 5d¹⁰ 6s²",
+Tl:"[Xe] 4f¹⁴ 5d¹⁰ 6s² 6p¹",
+Pb:"[Xe] 4f¹⁴ 5d¹⁰ 6s² 6p²",
+Bi:"[Xe] 4f¹⁴ 5d¹⁰ 6s² 6p³",
+Po:"[Xe] 4f¹⁴ 5d¹⁰ 6s² 6p⁴",
+At:"[Xe] 4f¹⁴ 5d¹⁰ 6s² 6p⁵",
+Rn:"[Xe] 4f¹⁴ 5d¹⁰ 6s² 6p⁶",
+
+Fr:"[Rn] 7s¹",
+Ra:"[Rn] 7s²",
+Ac:"[Rn] 6d¹ 7s²",
+
+Rf:"[Rn] 5f¹⁴ 6d² 7s²",
+Db:"[Rn] 5f¹⁴ 6d³ 7s²",
+Sg:"[Rn] 5f¹⁴ 6d⁴ 7s²",
+Bh:"[Rn] 5f¹⁴ 6d⁵ 7s²",
+Hs:"[Rn] 5f¹⁴ 6d⁶ 7s²",
+Mt:"[Rn] 5f¹⁴ 6d⁷ 7s²",
+Ds:"[Rn] 5f¹⁴ 6d⁸ 7s²",
+Rg:"[Rn] 5f¹⁴ 6d⁹ 7s²",
+Cn:"[Rn] 5f¹⁴ 6d¹⁰ 7s²",
+Nh:"[Rn] 5f¹⁴ 6d¹⁰ 7s² 7p¹",
+Fl:"[Rn] 5f¹⁴ 6d¹⁰ 7s² 7p²",
+Mc:"[Rn] 5f¹⁴ 6d¹⁰ 7s² 7p³",
+Lv:"[Rn] 5f¹⁴ 6d¹⁰ 7s² 7p⁴",
+Ts:"[Rn] 5f¹⁴ 6d¹⁰ 7s² 7p⁵",
+Og:"[Rn] 5f¹⁴ 6d¹⁰ 7s² 7p⁶"
+
+};
+
+
+/* =====================================================
+   TẠO BẢNG CHÍNH
+===================================================== */
+
+const table = document.getElementById("periodic-table");
+
+function taoO(el) {
+
+    const symbol = el[0];
+    const name = el[1];
+    const number = el[2];
+    const period = el[3];
+    const group = el[4];
+    const type = el[5];
+    const mass = el[6];
+
+    const box = document.createElement("div");
+
+    box.className = "element";
+
+    box.style.gridColumn = group;
+    box.style.gridRow = period;
+
+
+    if (type === "Kim loại kiềm")
+        box.classList.add("kim-loai-kiem");
+
+    else if (type === "Kim loại kiềm thổ")
+        box.classList.add("kim-loai-kiem-tho");
+
+    else if (type === "Kim loại chuyển tiếp")
+        box.classList.add("kim-loai-chuyen-tiep");
+
+    else if (type === "Kim loại")
+        box.classList.add("kim-loai-hau-chuyen-tiep");
+
+    else if (type === "Á kim")
+        box.classList.add("a-kim");
+
+    else if (type === "Phi kim")
+        box.classList.add("phan-kim");
+
+    else if (type === "Halogen")
+        box.classList.add("halogen");
+
+    else if (type === "Khí hiếm")
+        box.classList.add("khi-hiem");
+
+
+    box.innerHTML = `
+        <div class="number">${number}</div>
+        <div class="symbol">${symbol}</div>
+        <div class="name">${name}</div>
+    `;
+
+
+    box.onclick = function() {
+
+        document.getElementById("info-symbol").textContent =
+            symbol;
+
+        document.getElementById("info-name").textContent =
+            name;
+
+        document.getElementById("info-number").textContent =
+            number;
+
+        document.getElementById("info-mass").textContent =
+            mass;
+
+        document.getElementById("info-proton").textContent =
+            number;
+
+        document.getElementById("info-electron").textContent =
+            number;
+
+        document.getElementById("info-neutron").textContent =
+            Math.round(mass) - number;
+
+        document.getElementById("info-period").textContent =
+            period;
+
+        document.getElementById("info-group").textContent =
+            group;
+
+        document.getElementById("info-type").textContent =
+            type;
+
+        document.getElementById("info-config").textContent =
+            electronConfig[symbol] || "Đang cập nhật";
+
+
+        document
+            .getElementById("element-info")
+            .classList
+            .remove("hidden");
+
+    };
+
+
+    table.appendChild(box);
+}
+
+
+elements.forEach(taoO);
+
+
+/* =====================================================
+   HỌ LANTAN
+===================================================== */
+
+const lanthanides = [
+
+["Ce","Cerium",58],
+["Pr","Praseodymium",59],
+["Nd","Neodymium",60],
+["Pm","Promethium",61],
+["Sm","Samarium",62],
+["Eu","Europium",63],
+["Gd","Gadolinium",64],
+["Tb","Terbium",65],
+["Dy","Dysprosium",66],
+["Ho","Holmium",67],
+["Er","Erbium",68],
+["Tm","Thulium",69],
+["Yb","Ytterbium",70],
+["Lu","Lutetium",71]
+
+];
+
+const lanthanideBox =
+    document.getElementById("lanthanides");
+
+
+lanthanides.forEach(function(el) {
+
+    const box = document.createElement("div");
+
+    box.className = "f-element lanthanide";
+
+    box.innerHTML = `
+        <div class="number">${el[2]}</div>
+        <div class="symbol">${el[0]}</div>
+        <div class="name">${el[1]}</div>
+    `;
+
+
+    box.onclick = function() {
+
+        document.getElementById("info-symbol").textContent =
+            el[0];
+
+        document.getElementById("info-name").textContent =
+            el[1];
+
+        document.getElementById("info-number").textContent =
+            el[2];
+
+        document.getElementById("info-mass").textContent =
+            "Đang cập nhật";
+
+        document.getElementById("info-proton").textContent =
+            el[2];
+
+        document.getElementById("info-electron").textContent =
+            el[2];
+
+        document.getElementById("info-neutron").textContent =
+            "Đang cập nhật";
+
+        document.getElementById("info-period").textContent =
+            "6";
+
+        document.getElementById("info-group").textContent =
+            "Họ Lantan";
+
+        document.getElementById("info-type").textContent =
+            "Kim loại";
+
+        document.getElementById("info-config").textContent =
+            electronConfig[el[0]] || "Đang cập nhật";
+
+
+        document
+            .getElementById("element-info")
+            .classList
+            .remove("hidden");
+
+    };
+
+
+    lanthanideBox.appendChild(box);
+
+});
+
+
+/* =====================================================
+   HỌ ACTINI
+===================================================== */
+
+const actinides = [
+
+["Th","Thorium",90],
+["Pa","Protactinium",91],
+["U","Uranium",92],
+["Np","Neptunium",93],
+["Pu","Plutonium",94],
+["Am","Americium",95],
+["Cm","Curium",96],
+["Bk","Berkelium",97],
+["Cf","Californium",98],
+["Es","Einsteinium",99],
+["Fm","Fermium",100],
+["Md","Mendelevium",101],
+["No","Nobelium",102],
+["Lr","Lawrencium",103]
+
+];
+
+const actinideBox =
+    document.getElementById("actinides");
+
+
+actinides.forEach(function(el) {
+
+    const box = document.createElement("div");
+
+    box.className = "f-element actinide";
+
+    box.innerHTML = `
+        <div class="number">${el[2]}</div>
+        <div class="symbol">${el[0]}</div>
+        <div class="name">${el[1]}</div>
+    `;
+
+
+    box.onclick = function() {
+
+        document.getElementById("info-symbol").textContent =
+            el[0];
+
+        document.getElementById("info-name").textContent =
+            el[1];
+
+        document.getElementById("info-number").textContent =
+            el[2];
+
+        document.getElementById("info-mass").textContent =
+            "Đang cập nhật";
+
+        document.getElementById("info-proton").textContent =
+            el[2];
+
+        document.getElementById("info-electron").textContent =
+            el[2];
+
+        document.getElementById("info-neutron").textContent =
+            "Đang cập nhật";
+
+        document.getElementById("info-period").textContent =
+            "7";
+
+        document.getElementById("info-group").textContent =
+            "Họ Actini";
+
+        document.getElementById("info-type").textContent =
+            "Kim loại";
+
+        document.getElementById("info-config").textContent =
+            electronConfig[el[0]] || "Đang cập nhật";
+
+
+        document
+            .getElementById("element-info")
+            .classList
+            .remove("hidden");
+
+    };
+
+
+    actinideBox.appendChild(box);
+
+});
+
+
+/* =====================================================
+   ĐÓNG HỘP THÔNG TIN
+===================================================== */
+
+document.getElementById("close").onclick = function() {
+
+    document
+        .getElementById("element-info")
+        .classList
+        .add("hidden");
+
+};
+
+
+document.getElementById("element-info").onclick = function(e) {
+
+    if (e.target.id === "element-info") {
+
+        document
+            .getElementById("element-info")
+            .classList
+            .add("hidden");
+
+    }
+
+};
+
+
+/* =====================================================
+   TÌM KIẾM
+===================================================== */
+
+document.getElementById("search").addEventListener(
+    "input",
+    function() {
+
+        const keyword =
+            this.value.toLowerCase();
+
+        document
+            .querySelectorAll(".element")
+            .forEach(function(box) {
+
+                if (
+                    box.innerText
+                        .toLowerCase()
+                        .includes(keyword)
+                ) {
+
+                    box.style.opacity = "1";
+
+                } else {
+
+                    box.style.opacity = "0.2";
+
+                }
+
+            });
+
+    }
+);
+
+</script>
+
+</body>
+</html>
