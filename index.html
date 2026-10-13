@@ -305,11 +305,148 @@ footer {
     background: #6842a5;
     color: white;
 }
+/* ===== DETECTIVE CONAN CASE FILE ===== */
+
+body {
+  background: #f3efe5;
+}
+
+header {
+  background: linear-gradient(135deg, #172b46, #315a7d);
+  border-bottom: 5px solid #c7a96b;
+  position: relative;
+}
+
+header::after {
+  content: "🔎 CASE FILE No. 001 • MẬT";
+  display: inline-block;
+  margin-top: 12px;
+  padding: 7px 12px;
+  border: 2px dashed #f2d6a0;
+  color: #fff0c9;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+header h1 {
+  text-shadow: 2px 2px 0 #172b46;
+}
+
+header p {
+  color: #e7edf5;
+}
+
+h2 {
+  color: #254b70;
+}
+
+.element,
+.f-element {
+  border: 1px solid rgba(39, 57, 78, 0.2);
+  box-shadow: 1px 2px 0 rgba(39, 57, 78, 0.12);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.element:hover,
+.f-element:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(32, 53, 75, 0.2);
+}
+
+@media (max-width: 600px) {
+  header {
+    padding: 24px 12px;
+  }
+
+  header::after {
+    font-size: 10px;
+  }
+}
+.case-file {
+  max-width: 900px;
+  margin: 22px auto;
+  padding: 20px;
+  box-sizing: border-box;
+  background: #fffdf5;
+  border: 2px solid #263c55;
+  border-left: 7px solid #b83b3b;
+  border-radius: 6px;
+  box-shadow: 5px 5px 0 #d5c8ae;
+  color: #263c55;
+}
+
+.case-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-weight: bold;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.case-secret {
+  color: #b83b3b;
+  border: 2px solid #b83b3b;
+  padding: 4px 8px;
+  transform: rotate(3deg);
+}
+
+.case-file h2 {
+  text-align: center;
+  margin: 20px 0 8px;
+  color: #263c55;
+}
+
+.case-file h3 {
+  text-align: center;
+  color: #a73535;
+  font-size: 15px;
+}
+
+.case-file p {
+  line-height: 1.6;
+  text-align: center;
+}
+
+.case-bottom {
+  padding-top: 12px;
+  border-top: 1px dashed #a89a81;
+  text-align: center;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 600px) {
+  .case-file {
+    margin: 16px 10px;
+    padding: 14px;
+  }
+}
 </style>
 </head>
 
 <body>
+<!-- HỒ SƠ VỤ ÁN CONAN -->
+<div class="case-file">
+  <div class="case-top">
+    <span>🕵️ DETECTIVE CONAN</span>
+    <span class="case-secret">TOP SECRET</span>
+  </div>
 
+  <h2>🔎 HỒ SƠ VỤ ÁN #001</h2>
+  <h3>BÍ ẨN 118 NGUYÊN TỐ HÓA HỌC</h3>
+
+  <p>
+    Thám tử Conan đang điều tra thế giới nguyên tố.
+    Hãy tìm kiếm manh mối và khám phá từng nguyên tố!
+  </p>
+
+  <div class="case-bottom">
+    EVIDENCE No. 118 · CHEMISTRY INVESTIGATION
+  </div>
+</div>
+<!-- KẾT THÚC HỒ SƠ -->
 <header>
     <h1>🧪 BẢNG TUẦN HOÀN HÓA HỌC</h1>
     <p>Hóa học 10 — Khám phá thế giới các nguyên tố</p>
