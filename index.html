@@ -689,6 +689,52 @@ h2 {
     font-size: 17px;
   }
 }
+    /* ===== CONAN: CASE FILE OPENING EFFECT ===== */
+
+/* Hiệu ứng xuất hiện của hồ sơ */
+#element-info:not(.hidden) {
+    animation: caseFileOpen 0.35s ease-out;
+    border: 3px solid #183653;
+    border-radius: 12px;
+    box-shadow:
+        0 0 0 4px #d7c9a4,
+        0 12px 35px rgba(10, 25, 45, 0.35);
+}
+
+/* Tiêu đề và thông tin mang phong cách hồ sơ mật */
+#element-info h2,
+#element-info h3 {
+    color: #183653;
+    letter-spacing: 1px;
+}
+
+#element-info p {
+    line-height: 1.7;
+}
+
+/* Nút đóng hồ sơ */
+#close {
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+}
+
+#close:hover {
+    transform: scale(1.08);
+    background: #a83245;
+    color: white;
+}
+
+/* Hiệu ứng mở hồ sơ */
+@keyframes caseFileOpen {
+    from {
+        opacity: 0;
+        transform: scale(0.92) translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
 </style>
 </head>
 
