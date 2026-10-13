@@ -423,6 +423,30 @@ h2 {
     padding: 14px;
   }
 }
+    /* Conan evidence photo */
+.conan-image {
+  display: block;
+  width: 150px;
+  max-width: 45%;
+  height: auto;
+  margin: 18px auto;
+  border: 5px solid #fffdf5;
+  outline: 2px solid #263c55;
+  box-shadow: 4px 5px 0 #c7b99f;
+  transform: rotate(-2deg);
+}
+
+.case-file {
+  background-image:
+    radial-gradient(#d8cdb8 0.6px, transparent 0.6px);
+  background-size: 10px 10px;
+}
+
+@media (max-width: 600px) {
+  .conan-image {
+    width: 120px;
+  }
+}
 </style>
 </head>
 
@@ -436,7 +460,11 @@ h2 {
 
   <h2>🔎 HỒ SƠ VỤ ÁN #001</h2>
   <h3>BÍ ẨN 118 NGUYÊN TỐ HÓA HỌC</h3>
-
+<img
+  src="conan.jpg"
+  alt="Thám tử Conan"
+  class="conan-image"
+>
   <p>
     Thám tử Conan đang điều tra thế giới nguyên tố.
     Hãy tìm kiếm manh mối và khám phá từng nguyên tố!
