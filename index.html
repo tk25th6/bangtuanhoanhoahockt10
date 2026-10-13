@@ -448,6 +448,82 @@ h2 {
     max-width:75%;
   }
 }
+/* ===== CONAN CASE FILE: KIEN THUC HOA 10 ===== */
+
+.knowledge {
+  position: relative;
+  max-width: 1100px;
+  margin: 35px auto;
+  padding: 28px 22px;
+  background: #f8f2e5;
+  border: 2px solid #263c55;
+  border-top: 8px solid #263c55;
+  border-radius: 8px;
+  box-shadow: 5px 6px 0 #d5c6a8;
+  color: #263c55;
+}
+
+.knowledge::before {
+  content: "CONFIDENTIAL • CHEMISTRY CASE FILE";
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto 18px;
+  padding: 7px 12px;
+  border: 2px solid #a73535;
+  color: #a73535;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  text-align: center;
+  transform: rotate(-1deg);
+}
+
+.knowledge > h2 {
+  color: #263c55;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 24px;
+}
+
+.knowledge-card {
+  position: relative;
+  margin: 16px 0;
+  padding: 20px;
+  background: #fffdf7;
+  border: 1px solid #d8c9aa;
+  border-left: 6px solid #a73535;
+  border-radius: 6px;
+  box-shadow: 2px 3px 0 rgba(38, 60, 85, 0.10);
+}
+
+.knowledge-card h3 {
+  color: #263c55;
+  border-bottom: 1px dashed #c7b99f;
+  padding-bottom: 10px;
+}
+
+.knowledge-card p {
+  color: #3e4650;
+  line-height: 1.8;
+}
+
+@media (max-width: 600px) {
+  .knowledge {
+    margin: 22px 10px;
+    padding: 18px 12px;
+  }
+
+  .knowledge-card {
+    padding: 14px;
+  }
+
+  .knowledge::before {
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+}
 </style>
 </head>
 
