@@ -524,6 +524,129 @@ h2 {
     letter-spacing: 1px;
   }
 }
+    /* ===== HỒ SƠ MẬT CONAN ===== */
+.case-knowledge {
+  max-width: 1100px;
+  margin: 35px auto;
+  padding: 28px;
+  background: #f7f2e8;
+  border: 2px solid #263c55;
+  border-left: 8px solid #a63848;
+  border-radius: 10px;
+  box-shadow: 0 8px 22px #172c4530;
+  position: relative;
+}
+
+.knowledge-heading {
+  text-align: center;
+  padding-bottom: 18px;
+  margin-bottom: 22px;
+  border-bottom: 2px dashed #a89a81;
+}
+
+.knowledge-heading h2 {
+  color: #172f4d;
+  font-size: 25px;
+  letter-spacing: 1px;
+}
+
+.confidential-stamp {
+  display: inline-block;
+  color: #a63848;
+  border: 2px solid #a63848;
+  padding: 6px 12px;
+  font-weight: bold;
+  font-size: 12px;
+  letter-spacing: 2px;
+  transform: rotate(-2deg);
+}
+
+.case-subtitle {
+  color: #53677d;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.case-knowledge .knowledge-card {
+  position: relative;
+  background: #fffdf8;
+  border: 1px solid #d8cdbb;
+  border-left: 5px solid #a63848;
+  border-radius: 7px;
+  padding: 22px;
+  margin: 16px 0;
+  box-shadow: 0 3px 8px #263c5515;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.case-knowledge .knowledge-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 15px #263c5525;
+}
+
+.case-knowledge .knowledge-card h3 {
+  color: #203d60;
+  margin-top: 10px;
+  font-size: 19px;
+}
+
+.case-knowledge .knowledge-card p {
+  color: #303947;
+  line-height: 1.8;
+}
+
+.evidence-label {
+  display: inline-block;
+  background: #203d60;
+  color: white;
+  padding: 5px 9px;
+  border-radius: 3px;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.case-knowledge .knowledge-card .case-note {
+  border-top: 1px dashed #c7b99f;
+  padding-top: 10px;
+  color: #a63848;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.case-footer {
+  text-align: center;
+  border-top: 2px dashed #a89a81;
+  margin-top: 25px;
+  padding-top: 15px;
+  color: #203d60;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.case-footer p:first-child {
+  color: #a63848;
+  font-weight: bold;
+}
+
+@media (max-width: 600px) {
+  .case-knowledge {
+    margin: 18px 10px;
+    padding: 14px;
+  }
+
+  .knowledge-heading h2 {
+    font-size: 19px;
+  }
+
+  .case-knowledge .knowledge-card {
+    padding: 16px;
+  }
+
+  .case-knowledge .knowledge-card h3 {
+    font-size: 17px;
+  }
+}
 </style>
 </head>
 
@@ -637,59 +760,65 @@ h2 {
 </div>
 
 
-<!-- KIẾN THỨC HÓA 10 -->
+<!-- HỒ SƠ KIẾN THỨC HÓA HỌC 10 -->
+<section class="knowledge case-knowledge">
 
-<section class="knowledge">
+  <div class="knowledge-heading">
+    <p class="confidential-stamp">TOP SECRET • HỒ SƠ MẬT</p>
+    <h2>📚 HỒ SƠ KIẾN THỨC HÓA HỌC 10</h2>
+    <p class="case-subtitle">
+      DETECTIVE CONAN • PHÒNG ĐIỀU TRA NGUYÊN TỐ
+    </p>
+  </div>
 
-    <h2>📚 KIẾN THỨC HÓA HỌC 10</h2>
+  <div class="knowledge-card">
+    <span class="evidence-label">EVIDENCE 001</span>
+    <h3>🔎 Cấu tạo nguyên tử</h3>
+    <p>
+      Nguyên tử gồm hạt nhân và lớp vỏ electron.
+      Hạt nhân chứa proton và neutron. Electron
+      chuyển động xung quanh hạt nhân.
+    </p>
+    <p class="case-note">MANH MỐI: Proton • Neutron • Electron</p>
+  </div>
 
-    <div class="knowledge-card">
+  <div class="knowledge-card">
+    <span class="evidence-label">EVIDENCE 002</span>
+    <h3>🧪 Số hiệu nguyên tử</h3>
+    <p>
+      Số hiệu nguyên tử Z bằng số proton trong hạt nhân.
+      Với nguyên tử trung hòa, số proton bằng số electron.
+    </p>
+    <p class="case-note">DỮ KIỆN QUAN TRỌNG: Z = số proton</p>
+  </div>
 
-        <h3>🔹 Cấu tạo nguyên tử</h3>
+  <div class="knowledge-card">
+    <span class="evidence-label">EVIDENCE 003</span>
+    <h3>📋 Bảng tuần hoàn</h3>
+    <p>
+      Các nguyên tố được sắp xếp theo chiều tăng dần
+      của số hiệu nguyên tử. Bảng gồm các chu kì
+      và các nhóm nguyên tố.
+    </p>
+    <p class="case-note">NHIỆM VỤ: Truy tìm vị trí nguyên tố</p>
+  </div>
 
-        <p>
-            Nguyên tử gồm hạt nhân và lớp vỏ electron.
-            Hạt nhân chứa proton và neutron.
-            Electron chuyển động xung quanh hạt nhân.
-        </p>
+  <div class="knowledge-card">
+    <span class="evidence-label">EVIDENCE 004</span>
+    <h3>⚛️ Liên kết hóa học</h3>
+    <p>
+      Liên kết hóa học là sự kết hợp giữa các nguyên tử,
+      tạo thành phân tử hoặc tinh thể bền vững.
+    </p>
+    <p class="case-note">HỒ SƠ: Khám phá cách các nguyên tử kết hợp</p>
+  </div>
 
-    </div>
-
-    <div class="knowledge-card">
-
-        <h3>🔹 Số hiệu nguyên tử</h3>
-
-        <p>
-            Số hiệu nguyên tử Z bằng số proton trong hạt nhân.
-            Với nguyên tử trung hòa, số proton bằng số electron.
-        </p>
-
-    </div>
-
-    <div class="knowledge-card">
-
-        <h3>🔹 Bảng tuần hoàn</h3>
-
-        <p>
-            Các nguyên tố được sắp xếp theo chiều tăng dần
-            của số hiệu nguyên tử.
-        </p>
-
-    </div>
-
-    <div class="knowledge-card">
-
-        <h3>🔹 Liên kết hóa học</h3>
-
-        <p>
-            Liên kết hóa học là sự kết hợp giữa các nguyên tử
-            tạo thành phân tử hoặc tinh thể bền vững.
-        </p>
-
-    </div>
+  <div class="case-footer">
+    <p>🔐 CLASSIFIED INFORMATION</p>
+    <p>Hồ sơ chỉ hoàn tất khi tìm ra đủ 118 nguyên tố!</p>
+  </div>
 
 </section>
-
 
 <!-- HỘP THÔNG TIN NGUYÊN TỐ -->
 
