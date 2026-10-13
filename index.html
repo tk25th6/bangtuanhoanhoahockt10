@@ -1606,6 +1606,143 @@ document.getElementById("search").addEventListener(
 );
 
 </script>
+<section id="electronegativity" style="
+    max-width:1100px;
+    width:92%;
+    margin:40px auto;
+    padding:25px;
+    background:#f6f0e2;
+    border:3px solid #263c55;
+    border-top:9px solid #263c55;
+    box-shadow:0 8px 22px #0002;
+    border-radius:6px;
+    color:#263c55;
+">
+    <div style="text-align:center;margin-bottom:22px">
+        <span style="
+            display:inline-block;
+            color:#a52e3a;
+            border:2px solid #a52e3a;
+            padding:5px 12px;
+            font-size:11px;
+            font-weight:bold;
+            letter-spacing:2px;
+            transform:rotate(-2deg);
+        ">TOP SECRET</span>
 
+        <h2 style="margin:18px 0 8px">
+            🔬 HỒ SƠ CHỨNG CỨ
+        </h2>
+
+        <h3 style="margin:0">
+            BẢNG ĐỘ ÂM ĐIỆN
+        </h3>
+
+        <p style="color:#7b3940;font-size:13px">
+            THANG PAULING • HÓA HỌC 10
+        </p>
+    </div>
+
+    <p>
+        Độ âm điện đặc trưng cho khả năng hút electron
+        của nguyên tử khi hình thành liên kết hóa học.
+    </p>
+
+    <input
+        id="electro-search"
+        type="text"
+        placeholder="🔎 Tìm kí hiệu hoặc tên nguyên tố..."
+        oninput="filterElectro()"
+        style="
+            width:100%;
+            box-sizing:border-box;
+            padding:12px;
+            border:2px solid #263c55;
+            border-radius:5px;
+            margin:12px 0 18px;
+            font-size:15px;
+        "
+    >
+
+    <div style="overflow-x:auto">
+        <table style="
+            width:100%;
+            border-collapse:collapse;
+            background:#fffdf7;
+            text-align:center;
+        ">
+            <thead>
+                <tr style="background:#263c55;color:white">
+                    <th style="padding:12px">Kí hiệu</th>
+                    <th style="padding:12px">Tên nguyên tố</th>
+                    <th style="padding:12px">Độ âm điện</th>
+                </tr>
+            </thead>
+
+            <tbody id="electro-body">
+                <tr><td>H</td><td>Hydrogen</td><td>2.20</td></tr>
+                <tr><td>Li</td><td>Lithium</td><td>0.98</td></tr>
+                <tr><td>Be</td><td>Beryllium</td><td>1.57</td></tr>
+                <tr><td>B</td><td>Boron</td><td>2.04</td></tr>
+                <tr><td>C</td><td>Carbon</td><td>2.55</td></tr>
+                <tr><td>N</td><td>Nitrogen</td><td>3.04</td></tr>
+                <tr><td>O</td><td>Oxygen</td><td>3.44</td></tr>
+                <tr><td>F</td><td>Fluorine</td><td>3.98</td></tr>
+                <tr><td>Na</td><td>Sodium</td><td>0.93</td></tr>
+                <tr><td>Mg</td><td>Magnesium</td><td>1.31</td></tr>
+                <tr><td>Al</td><td>Aluminium</td><td>1.61</td></tr>
+                <tr><td>Si</td><td>Silicon</td><td>1.90</td></tr>
+                <tr><td>P</td><td>Phosphorus</td><td>2.19</td></tr>
+                <tr><td>S</td><td>Sulfur</td><td>2.58</td></tr>
+                <tr><td>Cl</td><td>Chlorine</td><td>3.16</td></tr>
+                <tr><td>K</td><td>Potassium</td><td>0.82</td></tr>
+                <tr><td>Ca</td><td>Calcium</td><td>1.00</td></tr>
+                <tr><td>Cr</td><td>Chromium</td><td>1.66</td></tr>
+                <tr><td>Mn</td><td>Manganese</td><td>1.55</td></tr>
+                <tr><td>Fe</td><td>Iron</td><td>1.83</td></tr>
+                <tr><td>Co</td><td>Cobalt</td><td>1.88</td></tr>
+                <tr><td>Ni</td><td>Nickel</td><td>1.91</td></tr>
+                <tr><td>Cu</td><td>Copper</td><td>1.90</td></tr>
+                <tr><td>Zn</td><td>Zinc</td><td>1.65</td></tr>
+                <tr><td>Br</td><td>Bromine</td><td>2.96</td></tr>
+                <tr><td>Ag</td><td>Silver</td><td>1.93</td></tr>
+                <tr><td>I</td><td>Iodine</td><td>2.66</td></tr>
+                <tr><td>Au</td><td>Gold</td><td>2.54</td></tr>
+                <tr><td>Hg</td><td>Mercury</td><td>2.00</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p style="
+        margin-top:18px;
+        padding:12px;
+        background:#eadbd3;
+        border-left:5px solid #a52e3a;
+        font-size:13px;
+    ">
+        📌 Ghi chú: Các giá trị trên theo thang Pauling.
+        Đây là bảng tham khảo một số nguyên tố, không phải
+        dữ liệu độ âm điện của toàn bộ 118 nguyên tố.
+    </p>
+</section>
+
+<script>
+function filterElectro() {
+    const input = document
+        .getElementById("electro-search")
+        .value.toLowerCase()
+        .trim();
+
+    const rows = document.querySelectorAll(
+        "#electro-body tr"
+    );
+
+    rows.forEach(function(row) {
+        row.style.display = row.textContent
+            .toLowerCase()
+            .includes(input) ? "" : "none";
+    });
+}
+</script>
 </body>
 </html>
