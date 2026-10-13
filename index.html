@@ -735,6 +735,68 @@ h2 {
         transform: scale(1) translateY(0);
     }
 }
+    /* ===== CONAN CASE FILE EFFECT ===== */
+
+/* Nền tối phía sau hồ sơ */
+#element-info:not(.hidden) {
+    background: rgba(5, 18, 43, 0.78);
+    backdrop-filter: blur(5px);
+}
+
+/* Giấy hồ sơ */
+#element-info .modal-content,
+#element-info .element-info-content {
+    background:
+        linear-gradient(135deg, #fffdf5, #f2ead7);
+    border: 3px solid #243b5a;
+    border-top: 8px solid #243b5a;
+    border-radius: 5px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+    position: relative;
+    animation: openCase 0.35s ease-out;
+}
+
+/* Hiệu ứng mở hồ sơ */
+@keyframes openCase {
+    from {
+        opacity: 0;
+        transform: translateY(18px) scale(0.94);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Dấu mật đỏ */
+#element-info .modal-content::before,
+#element-info .element-info-content::before {
+    content: "TOP SECRET • CASE FILE";
+    display: block;
+    width: fit-content;
+    margin: 0 auto 14px;
+    padding: 5px 12px;
+    color: #a52e3a;
+    border: 2px solid #a52e3a;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    transform: rotate(-2deg);
+}
+
+/* Tiêu đề nguyên tố */
+#element-info h2,
+#element-info h3 {
+    color: #203957;
+}
+
+/* Các dòng thông tin */
+#element-info p {
+    padding: 8px 10px;
+    margin: 5px 0;
+    border-bottom: 1px dashed #c5bba7;
+    color: #24344b;
+}
 </style>
 </head>
 
