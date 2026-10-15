@@ -1340,9 +1340,38 @@ function taoO(el) {
         document.getElementById("info-period").textContent =
             period;
 
-        document.getElementById("info-group").textContent =
-            group;
+        const mainGroupNames = {
+    1: "IA",
+    2: "IIA",
+    13: "IIIA",
+    14: "IVA",
+    15: "VA",
+    16: "VIA",
+    17: "VIIA",
+    18: "VIIIA"
+};
 
+const transitionGroupNames = {
+    3: "IIIB",
+    4: "IVB",
+    5: "VB",
+    6: "VIB",
+    7: "VIIB",
+    8: "VIIIB",
+    9: "VIIIB",
+    10: "VIIIB",
+    11: "IB",
+    12: "IIB"
+};
+
+const oldGroup = Number(group);
+const traditionalGroup =
+    mainGroupNames[oldGroup] ||
+    transitionGroupNames[oldGroup] ||
+    "Chưa quy ước";
+
+document.getElementById("info-group").textContent =
+    Nhóm ${oldGroup} (${traditionalGroup});
         document.getElementById("info-type").textContent =
             type;
 
